@@ -39,5 +39,7 @@ There are three mainly commands for `Squid`
    ```
 
 
-When we finish with the setup of `Squio` we continue with our network. 
+When we finish with the setup of `Squid` we continue with our network.
+
+ 
 
