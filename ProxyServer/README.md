@@ -10,6 +10,9 @@ the "site".
 In our example we don't need a switch we set up only two hosts in `mininet` and use one as `client` and the other 
 as `server- web site` . But first we need to set up our proxy server. For that we use the [`Squid`](http://www.squid-cache.org/) .
 
+
+## Setup Squid
+
 The command for installing the `Squid` in `Ubuntu` is,
 
 ```
@@ -40,6 +43,17 @@ There are three mainly commands for `Squid`
 
 
 When we finish with the setup of `Squid` we continue with our network.
-==>
- 
 
+## Setup Mininet
+
+We simulate our network with the [Mininet](http://mininet.org/).
+First, intall the `mininet`
+
+```buildoutcfg
+sudo apt-get install mininet
+
+```
+
+For the topology of client-proxy server-server(web site) we have two hosts and the proxy server.
+We set two hosts. The first one `h1` is our client. The client will send its request via proxy server.
+For this reason  with set as default gateway in `h1` the ip of our proxy-server. 
