@@ -56,4 +56,5 @@ sudo apt-get install mininet
 
 For the topology of client-proxy server-server(web site) we have two hosts and the proxy server.
 We set two hosts. The first one `h1` is our client. The client will send its request via proxy server.
-For this reason  with set as default gateway in `h1` the ip of our proxy-server. 
+For this reason  with set as default route, example of this we can see [here](https://github.com/mininet/mininet/blob/master/examples/linuxrouter.py), in `h1` the ip of our proxy-server.             
+         
