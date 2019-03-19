@@ -77,3 +77,17 @@ cache_dir diskd DIRECTORY SIZE_Mbytes L1 L2 [OPTIONS] [Q1=n] [Q2=n]
 *`Q2`. Signifies the number of pending messages in the queue beyond which Squid will cease the operate and will go in to
 block mode.  The default value is 72.
  
+ 
+ ### Cache object size limits
+ There are two directives which declare the minimum and maximum size of objects which can be stored,
+ * `minimum_object_size`
+ 
+ *`maximum_object_size`
+ 
+ An example of this directive, 
+ ```buildoutcfg
+maximum_object_size 10 MB
+```
+
+
+### Cache replacement policied
