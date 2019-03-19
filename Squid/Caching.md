@@ -15,5 +15,20 @@ the limited storage space. So, the strategy which should follow is to caching th
 have high probability of being requested again.
 
 For Squid there two kind of objects which it caching
-* Hot/popular objects.
-* Negatively cached objects.
+* Hot/popular objects. These objects or web documents are popular and are requested quite frequently compared to
+others
+* Negatively cached objects. Negatively cached objects are error messages which Squid has encountered while fetching
+a page or web document on behalf of a client.
+
+First we start with directives about RAM
+
+* `cache_mem`. This define the size of RAM memory Squid is free to use.How to use is,
+```buildoutcfg
+cache_mem [integer number] [unit bytes/KB/MB/GB]
+```
+For example,
+```buildoutcfg
+cache_mem 100 MB
+```
+
+* 
