@@ -53,3 +53,15 @@ memory_cache_mode disk
 ```
 
 ### Using HD for caching
+*`cache_dir`. Declare the space on HD which Squid use to stor or cache the web documents. It syntax is,
+```buildoutcfg
+cache_dir STORAGE_TYPE DIRECTORY SIZE_IN_Mbytes L1 L2 [OPTIONS]
+```
+
+`STORAGE_TYPE` has three options,
+
+*`ufs`
+
+*`aufs`
+
+*`diskd`
