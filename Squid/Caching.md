@@ -60,8 +60,20 @@ cache_dir STORAGE_TYPE DIRECTORY SIZE_IN_Mbytes L1 L2 [OPTIONS]
 
 `STORAGE_TYPE` has three options,
 
-*`ufs`
+*`ufs`. Is good for servers with less load and high speed disks but is not really preferable for busy caches
 
-*`aufs`
+*`aufs`. Is `ufs` with asynchronous I/O support if we have the `pthreads` lib support on our OS we should always go for
+`aufs`, especialy for heavily loaded proxy servers.
 
-*`diskd`
+*`diskd`(Disk Daemon). Similar to `aufs`, only different is that uses an external process for I/O transactions instead
+for threads. Involves quering system. May get overloaded over time in a busy proxy server. Has two additional options to 
+`cache_dir`. In this case the syntax of directive will be,
+```buildoutcfg
+cache_dir diskd DIRECTORY SIZE_Mbytes L1 L2 [OPTIONS] [Q1=n] [Q2=n]
+```
+*`Q1`. Signifies the number of pending messages in the queue beyond which Squid will not place new requests for I/O
+ transactions. The default value is 64. 
+
+*`Q2`. Signifies the number of pending messages in the queue beyond which Squid will cease the operate and will go in to
+block mode.  The default value is 72.
+ 
