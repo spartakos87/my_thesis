@@ -31,4 +31,25 @@ For example,
 cache_mem 100 MB
 ```
 
-* 
+* `maximum_object_size_in_memory`. It defines the size of each object which can cache in RAM.
+
+  For example,
+  ```buildoutcfg
+   maximum_object_size_in_memory 1 MB
+  ```
+
+### Memory cache mode
+Squid give us the ability to choose which objext ot keep in memory-RAM cache for optimize reasons. For this we have to 
+use the directive `memory_cache_mode`.  There are three modes which can be used.
+*`always`. Keep all the the most recently fetched objects that can fit in the available space. `DEFAULT OPTION`
+*`disk`. Only the objects which are already cached on a HD(hard disk) and have a `HTI` (meaning they were requested subsequently after being
+cached), will be stored in the memory cache.
+*`network`. Only the objects which have been fetched from the network (including neighbors)
+are kept in the memory cache.
+
+An example of use this directive,
+```buildoutcfg
+memory_cache_mode disk
+```
+
+### Using HD for caching
