@@ -90,4 +90,31 @@ maximum_object_size 10 MB
 ```
 
 
-### Cache replacement policied
+### Cache replacement policies
+After sometime the cache of Squid will start to fill so we need to follow some policies how to delete old objects from 
+cache for the new ones. Squid has three policies among them which can select the more suitable for us.
+
+* `lru` - Least recently used. Removing the cached objects that are oldest. This policy utilizes the list data structure.
+Is the `DEFAULT` policy of Squid.
+
+* `heap GDSF` - Greedy dual size frequency. In this policy Squid keep in cache the cache the popular objects with a
+smaller size. 
+
+* `heap LFUDA` - Least frequently used with dynamic aging. Squid keeps the most popular objects in cache, irrespective 
+of their size.
+
+
+There are two directives which can use to define the policies which to follow, one for cache in RAM-memory and the other
+for the cache in HD.
+
+* `memory_replacement_policy`. Is the directive which define the policy which will follow the memory cache
+
+* `cache_replacement_policy`. And this one define the policy of HD cache
+
+An example of define the policies,
+
+```buildoutcfg
+memory_replacement_policy lru
+cache_replacement_policy heap LFUDA
+```
+
