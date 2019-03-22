@@ -1,7 +1,7 @@
 # How Squid caching
 
 In this documents will analyze the many of directives which can use in `squid.conf` to control how squid is caching.
-The most of information we use the book [Squid Proxy Server 3.1: Beginner's Guid]() as the Squid site is suggested.
+The most of information we use the book [Squid Proxy Server 3.1: Beginner's Guide](https://www.amazon.com/Squid-Proxy-Server-3-1-Beginners-ebook/dp/B005AXQHNQ) as the Squid site is suggested.
 
 ## Installation 
 For installation of `Squid` we can see [here](https://github.com/spartakos87/my_thesis/tree/master/ProxyServer), in
