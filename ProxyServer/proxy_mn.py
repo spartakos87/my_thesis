@@ -7,17 +7,15 @@ from mininet.log import setLogLevel
 
 class ProxyTopo(Topo):
     """
-    Topology with for hosts.
-    The host number one will "play" the role of the proxy
-    In host number1 will running the Squid proxy server
-    All the host will be connected only with host one
+    Topology with n hosts. At each host set defaultRoute via Squid proxy server
     """
     def build(self, n=4):
-        proxy_host = self.addHost('h0')
         # Python's range(N) generates 0..N-1
         for h in range(n):
-            host = self.addHost('h%s' % (h + 1))
-            self.addLink(host, proxy_host)
+            host = self.addHost('h%s' % (h + 1)
+
+                                # defaultRoute='via 172.17.0.1:3128'
+                                )
 
 def simpleTest():
     """
@@ -27,13 +25,20 @@ def simpleTest():
     topo = ProxyTopo(n=4)
     net = Mininet(topo)
     net.start()
-    proxy_host = net.get('h0')
-    proxy_host.cmd('service squid start')
-    print "Dumping host connections"
-    dumpNodeConnections(net.hosts)
-    print "Testing network connectivity"
-    net.pingAll()
+    h1 = net.get('h1')
+    h2 = net.get('h2')
+    h1.cmd("route add default gw 172.17.0.1:3128")
+    print h1.cmd("route -n")
+    print h2.cmd("route -n")
+    # print "PPP"
+    print h1.cmd('ping -c1 10.0.0.2' )
+    # print "Dumping host connections"
+    # dumpNodeConnections(net.hosts)
+    # print "Testing network connectivity"
+    # net.pingAll()
     net.stop()
+
+
 
 if __name__ == '__main__':
     # Tell mininet to print useful information
