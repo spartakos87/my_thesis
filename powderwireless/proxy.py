@@ -53,8 +53,10 @@ link10 = request.Link(members=[proxy_server_1, server_2])
 # After linked
 # Install ovs in switches
 ovs_install = "sudo apt-get --assume-yes install openvswitch-switch"
-switch_1.addService(rspec.Execute(shell="bash", command=update+"&& "+ovs_install))
-switch_2.addService(rspec.Execute(shell="bash", command=update+"&& "+ovs_install))
+get_py_config_file = "wget https://github.com/spartakos87/my_thesis/blob/master/powderwireless/setup_switch1.py"
+run_py_script = "python setup_switch1.py "
+switch_1.addService(rspec.Execute(shell="bash", command=update+" && "+ovs_install+ " && "+ get_py_config_file+ " && "+run_py_script+" 1"))
+switch_2.addService(rspec.Execute(shell="bash", command=update+" && "+ovs_install+" && "+get_py_config_file+" && "+run_py_script+" 2"))
 
 
 portal.context.printRequestRSpec()

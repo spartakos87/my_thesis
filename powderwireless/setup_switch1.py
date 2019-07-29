@@ -50,15 +50,5 @@ def set_up(n):
     map(lambda port: os.system("ifconfig "+port + " up"), ports_lst)
 
 
-
-
-
-
-
-
-
-
-
-
 if __name__ == '__main__':
-    print type(sys.argv[-1])
+    set_up(sys.argv[-1])
