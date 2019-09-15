@@ -29,7 +29,7 @@ controller = request.RawPC("controller")
 server_1 = request.RawPC("server1")
 server_2 = request.RawPC("server2")
 # Setup python servers in server_1 and server_2
-link_py_server = "https://github.com/spartakos87/my_thesis/blob/master/powderwireless/setup_servers.py"
+link_py_server = "https://raw.githubusercontent.com/spartakos87/my_thesis/master/powderwireless/setup_servers.py"
 get_py_server = "wget "+link_py_server
 run_py_server = "python setup_servers.py"
 server_1.addService(rspec.Execute(shell="bash", command=get_py_server+"; "+run_py_server))
