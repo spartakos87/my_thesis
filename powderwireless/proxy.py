@@ -28,6 +28,8 @@ controller = request.RawPC("controller")
 # Set up servers which clients will ping
 server_1 = request.RawPC("server1")
 server_2 = request.RawPC("server2")
+# Setup python servers in server_1 and server_2
+
 
 # Install Squid in proxy_server
 install_squid = "sudo apt-get --assume-yes install squid"
@@ -69,6 +71,7 @@ link8 = request.Link(members=[switch_3, server_2])
 # After linked
 # Install ovs in switches
 ovs_install = "sudo apt-get --assume-yes install openvswitch-switch"
+# Setup the switch and run it
 get_py_config_file = "wget https://github.com/spartakos87/my_thesis/blob/master/powderwireless/setup_switch1.py"
 run_py_script = "python setup_switch1.py "
 # Additionally must install the Squid
@@ -79,5 +82,6 @@ switch_2.addService(rspec.Execute(shell="bash", command=update+" && "+ovs_instal
 
 # In switch3 install, at least at first , only the ovs, create new py file to make the connects
 switch_3.addService(rspec.Execute(shell="bash", command=update+" && "+ovs_install))
-
+link9 = request.Link(members=[switch_3, switch_1])
+link10 = request.Link(members=[switch_3, switch_2])
 portal.context.printRequestRSpec()
