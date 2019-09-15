@@ -29,7 +29,11 @@ controller = request.RawPC("controller")
 server_1 = request.RawPC("server1")
 server_2 = request.RawPC("server2")
 # Setup python servers in server_1 and server_2
-
+link_py_server = "https://github.com/spartakos87/my_thesis/blob/master/powderwireless/setup_servers.py"
+get_py_server = "wget "+link_py_server
+run_py_server = "python setup_servers.py"
+server_1.addService(rspec.Execute(shell="bash", command=get_py_server+"; "+run_py_server))
+server_2.addService(rspec.Execute(shell="bash", command=get_py_server+"; "+run_py_server))
 
 # Install Squid in proxy_server
 install_squid = "sudo apt-get --assume-yes install squid"
